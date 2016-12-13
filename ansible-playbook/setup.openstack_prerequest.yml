@@ -1,0 +1,8 @@
+---
+-  hosts: all
+   roles: 
+    - openstack_prerequest
+
+-  hosts: openstack
+   roles: 
+    - openstack

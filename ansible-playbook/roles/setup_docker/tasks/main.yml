@@ -1,0 +1,11 @@
+- name: Install Docker
+  shell: curl -sSL https://get.docker.io | bash
+
+- name: Check the Docker Version  
+  shell: docker --version 
+
+- name: Create the drop-in unit directory for docker.service
+  shell: mkdir -p /etc/systemd/system/docker.service.d
+
+- name: Run these commands to reload the daemon
+  shell: systemctl daemon-reload;systemctl restart docker

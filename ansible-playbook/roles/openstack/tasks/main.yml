@@ -1,0 +1,60 @@
+- name: Install Docker on Openstack Node
+  shell: curl -sSL https://get.docker.io | bash
+
+- name: Check the Docker Version  
+  shell: docker --version 
+
+- name: Create the drop-in unit directory for docker.service
+  shell: mkdir -p /etc/systemd/system/docker.service.d
+
+#- name: Create the drop-in unit file
+#  shell: "tee /etc/systemd/system/docker.service.d/kolla.conf <<-'EOF' [Service]
+#         MountFlags=shared
+#         EOF"
+
+- name: Run these commands to reload the daemon
+  shell: systemctl daemon-reload;systemctl restart docker
+
+- name: Install git
+  yum: name=git state=latest
+
+- name: Install clients 
+  shell: pip install -U python-openstackclient
+
+- name: Install Ansible
+  shell: pip install -U ansible
+
+- name: Clone Kolla repo
+  shell: "git clone https://git.openstack.org/openstack/kolla"
+  ignore_errors: true
+
+- name: Install Kolla tools and Python dependencies
+  shell: "pip install kolla/"
+
+- name: Copy Kolla configuration to etc
+  shell: "cd kolla;cp -r etc/kolla /etc/"
+
+- name: Install ntp
+  yum: name=ntp state=latest
+
+- name: End installation of ntp
+  shell: systemctl enable ntpd.service;systemctl start ntpd.service
+
+#- name: Stop and disable libvirt
+#  shell: systemctl stop libvirtd.service;systemctl disable libvirtd.service
+
+- name: Generate password for kolla 
+  shell: kolla-genpwd
+
+- name: git clone kolla-ansible 
+  shell: git clone https://git.openstack.org/openstack/kolla-ansible
+  ignore_errors: true
+
+- name: Install Kolla tools and Python dependencies
+  shell: "pip install kolla-ansible/"
+
+- name: kolla prechecks
+  shell: kolla-ansible prechecks
+
+- name: kolla run deployment
+  shell: kolla-ansible deploy
