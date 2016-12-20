@@ -1,0 +1,33 @@
+- name: Download repo for virtualbox
+  shell: cd /etc/yum.repos.d/;wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+
+- name: Download rpm file
+  yum: name=http://epel.mirror.net.in/epel/7/x86_64/e/epel-release-7-8.noarch.rpm  state=installed
+
+- name: Install Required Packages
+  yum:
+    name: "{{ item }}"
+    state: installed
+    disable_gpg_check: yes
+  with_items:
+    - gcc
+    - make 
+    - patch  
+    - dkms 
+    - qt 
+    - libgomp
+    - kernel-headers 
+    - kernel-devel 
+    - fontforge 
+    - binutils 
+    - glibc-headers 
+    - glibc-devel
+
+- name: Install virtualbox
+  yum:
+    name: VirtualBox-5.1
+    state: installed
+
+- name: Start virtualbox
+  shell: /usr/lib/virtualbox/vboxdrv.sh setup;systemctl status vboxdrv
+ 

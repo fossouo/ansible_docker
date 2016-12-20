@@ -5,7 +5,41 @@
   shell: docker --version 
 
 - name: Create the drop-in unit directory for docker.service
-  shell: mkdir -p /etc/systemd/system/docker.service.d
+  file: state=directory path=/etc/systemd/system/docker.service.d
+
+- name: Create docker user
+  user:
+    name: root
+    group: root
+    groups: root,docker
+    append: yes 
 
 - name: Run these commands to reload the daemon
   shell: systemctl daemon-reload;systemctl restart docker
+
+- name: Install Epel-release
+  yum: name=epel-release state=latest
+
+- name: Install dependencies for Ansible
+  yum:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - gcc
+    - python-devel
+    - python-pip
+    - libffi-devel
+    - openssl-devel
+
+- name: Install Docker-Py
+  pip:
+    name: docker-py
+
+- name: Install Docker-Machine
+  shell: "curl -L https://github.com/docker/machine/releases/download/v0.9.0-rc2/docker-machine-`uname -s`-`uname -m` >/usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine"
+   
+- name: Container Test / application service
+  docker:
+    name: helloworld
+    image: rickfast/hello-oreilly
+    state: restarted

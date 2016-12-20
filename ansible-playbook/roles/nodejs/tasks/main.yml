@@ -1,0 +1,15 @@
+---
+- name : Install gcc-c++
+  yum: name=gcc-c++ state=latest
+
+- name : Install make
+  yum: name=make state=latest
+
+- name : Prepare Node Installation
+  shell: curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -
+
+- name : Install nodejs
+  yum: name=nodejs state=latest
+
+- name : Install lodash
+  shell : npm install lodash
