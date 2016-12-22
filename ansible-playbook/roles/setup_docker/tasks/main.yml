@@ -35,6 +35,10 @@
   pip:
     name: docker-py
 
+- name: Install Docker-compose 
+  pip: 
+    name: docker-compose
+
 - name: Install Docker-Machine
   shell: "curl -L https://github.com/docker/machine/releases/download/v0.9.0-rc2/docker-machine-`uname -s`-`uname -m` >/usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine"
    
