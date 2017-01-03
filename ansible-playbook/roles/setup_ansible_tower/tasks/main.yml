@@ -1,0 +1,14 @@
+- name : Check you have successfully install wget
+  yum : 
+    name: wget 
+    state: latest
+
+- name : Download Ansible-tower
+  get_url: 
+       url: https://releases.ansible.com/awx/setup/ansible-tower-setup-latest.tar.gz 
+       dest: /tmp/ansible-tower-setup-latest.tar.gz 
+       mode: 0440
+  delegate_to: localhost
+
+- name : Move to temp folder and untar ansible-tower archive
+  unarchive: src=/tmp/ansible-tower-setup-latest.tar.gz dest=/etc/ copy=no

@@ -1,0 +1,5 @@
+---
+
+-  hosts: ansible
+   roles: 
+    - setup_ansible_tower
