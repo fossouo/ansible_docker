@@ -14,9 +14,6 @@
     groups: root,docker
     append: yes 
 
-- name: Run these commands to reload the daemon
-  shell: systemctl daemon-reload;systemctl restart docker
-
 - name: Install Epel-release
   yum: name=epel-release state=latest
 
@@ -30,6 +27,10 @@
     - python-pip
     - libffi-devel
     - openssl-devel
+    - bridge-utils
+
+- name: Run these commands to reload the daemon
+  shell: systemctl daemon-reload;systemctl restart docker
 
 - name: Install Docker-Py
   pip:

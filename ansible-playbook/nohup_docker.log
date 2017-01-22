@@ -1,0 +1,18 @@
+nohup: les entrées sont ignorées
+time="2017-01-20T23:20:19.320446207+01:00" level=info msg="libcontainerd: new containerd process, pid: 3014" 
+time="2017-01-20T23:20:19.340610584+01:00" level=warning msg="containerd: low RLIMIT_NOFILE changing to max" current=1024 max=4096 
+time="2017-01-20T23:20:20.332544444+01:00" level=warning msg="overlay: the backing xfs filesystem is formatted without d_type support, which leads to incorrect behavior. Reformat the filesystem with ftype=1 to enable d_type support. Running without d_type support will no longer be supported in Docker 1.16." 
+time="2017-01-20T23:20:20.332640826+01:00" level=info msg="[graphdriver] using prior storage driver: overlay" 
+time="2017-01-20T23:20:20.338711784+01:00" level=info msg="Graph migration to content-addressability took 0.00 seconds" 
+time="2017-01-20T23:20:20.339358347+01:00" level=warning msg="mountpoint for pids not found" 
+time="2017-01-20T23:20:20.339875243+01:00" level=info msg="Loading containers: start." 
+time="2017-01-20T23:20:20.353150686+01:00" level=info msg="Firewalld running: true" 
+time="2017-01-20T23:20:21.041101611+01:00" level=info msg="Loading containers: done." 
+time="2017-01-20T23:20:21.053069363+01:00" level=info msg="Daemon has completed initialization" 
+time="2017-01-20T23:20:21.053147479+01:00" level=info msg="Docker daemon" commit=49bf474 graphdriver=overlay version=1.13.0 
+time="2017-01-20T23:20:21.072156397+01:00" level=info msg="API listen on /var/run/docker.sock" 
+time="2017-01-20T23:33:20.852828705+01:00" level=info msg="Firewalld running: false" 
+time="2017-01-20T23:40:22.186750685+01:00" level=info msg="stopping containerd after receiving terminated" 
+time="2017-01-20T23:40:22.187001192+01:00" level=info msg="Processing signal 'terminated'" 
+time="2017-01-20T23:40:22.192040444+01:00" level=info msg="Got signal to reload configuration, reloading from: /etc/docker/daemon.json" 
+time="2017-01-20T23:40:22.192126679+01:00" level=error msg="open /etc/docker/daemon.json: no such file or directory" 

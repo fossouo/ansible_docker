@@ -2,7 +2,7 @@
   shell: cd /etc/yum.repos.d/;wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
 
 - name: Download rpm file
-  yum: name=http://epel.mirror.net.in/epel/7/x86_64/e/epel-release-7-8.noarch.rpm  state=installed
+  yum: name=http://epel.mirror.net.in/epel/7/x86_64/e/epel-release-7-9.noarch.rpm  state=installed
 
 - name: Install Required Packages
   yum:
