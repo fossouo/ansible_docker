@@ -1,9 +1,9 @@
 [all]
-192.168.1.14
+192.168.1.14 ansible_python_interpreter=/usr/bin/python
 192.168.1.15
 192.168.1.16
 [openstack]
-192.168.1.14
+192.168.1.14 ansible_python_interpreter=/usr/bin/python
 [repo]
 192.168.1.15
 [ansible]
