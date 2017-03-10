@@ -12,19 +12,14 @@ Features :
 * spark
 * hive
 * zeppelin
+* anaconda3 - latest releases 
 
 State of the project :
 
-* Hadoop, yarn, spark, hive, zeppelin : running, not optimized. I'm interested by any feedback.
+* Hadoop, yarn, spark, hive, zeppelin & anaconda : running, not optimized. I'm interested by any feedback.
 
 Quickstart
 ----------
-
-### clone the project
-
-```bash
-git clone https://github.com/kibatic/docker-single-node-hadoop.git
-```
 
 ### create the container
 
