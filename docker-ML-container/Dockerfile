@@ -69,11 +69,11 @@ RUN chmod a+x /example/*.py
 # install spark
 ADD config/SPARK_HOME_conf_spark-env.sh /usr/local/spark/conf/spark-env.sh
 
-# install hive
+# install hive 1.2.2 (it changes on apache directory)
 RUN \
-    echo "load hive (90MB)" && wget -q -O /root/hive-bin.tar.gz http://apache.mirrors.ovh.net/ftp.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz && \
+    echo "load hive (90MB)" && wget -q -O /root/hive-bin.tar.gz http://apache.mirrors.ovh.net/ftp.apache.org/dist/hive/hive-1.2.2/apache-hive-1.2.2-bin.tar.gz && \
     echo "untar file" && cd /root && tar zxf hive-bin.tar.gz && \
-    mv apache-hive-1.2.1-bin /usr/local/hive
+    mv apache-hive-1.2.2-bin /usr/local/hive
 
 # install zeppelin
 RUN apt-get -y install \
