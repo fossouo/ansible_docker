@@ -26,4 +26,11 @@ RUN mkdir /staging
 
 VOLUME /staging
 
+## Install net-tools wget bzip2 -- debug and anaconda need
+RUN yum install net-tools wget bzip2 -y
+RUN wget -q -O /tmp/Anaconda3-4.3.1-Linux-x86_64.sh https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh && bash /tmp/Anaconda3-4.3.1-Linux-x86_64.sh -b -p /opt/anaconda3
+
+# Launch Notebook
+
+
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
