@@ -4,7 +4,7 @@
 # It also contains some pig/hive script and CSV test files to start with
 #
 #########################################################################################
-FROM dfossouo/cloudera-compose:5.9.0
+FROM dfossouo/cloudera:5.9.0
 
 MAINTAINER Donald FOSSOUO <fossouodonald@gmail.com>
 
@@ -13,6 +13,9 @@ RUN yum -y install pig hive flume-ng sqoop2 spark-worker && rm -rf /var/cache/yu
 
 #copy test data and script
 COPY cities.* /
+
+#setup supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 #copy flume conf and start scripts
 COPY flume/* /
@@ -23,4 +26,4 @@ RUN mkdir /staging
 
 VOLUME /staging
 
-CMD ["bash"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
